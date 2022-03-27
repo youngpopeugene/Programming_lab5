@@ -9,9 +9,11 @@ import java.util.Scanner;
 public class CreatorHumanBeing {
     private static Scanner input = new Scanner(System.in);
     private static boolean boolcheck = false;
+    private static boolean minutescheck = false;
 
     public HumanBeing createHumanBeing(){
         boolcheck = false;
+        minutescheck = false;
         String name = getName();
         Coordinates coordinates = getCoordinates();
         LocalDateTime creationDate = LocalDateTime.now();
@@ -23,9 +25,9 @@ public class CreatorHumanBeing {
         Mood mood = getMood();
         Car car = getCar();
 
-        if (!boolcheck && name != null && coordinates != null
-                && (mood != null) && (car != null) && (minutesOfWaiting>=0) && (weaponType != null)){
 
+        if (!boolcheck && name != null && coordinates != null
+                && (mood != null) && (car != null) && !minutescheck){
             return new HumanBeing(name, coordinates, creationDate,
                     realHero, hasToothpick, impactSpeed,
                     minutesOfWaiting, weaponType, mood, car);
@@ -127,11 +129,11 @@ public class CreatorHumanBeing {
             String line;
             System.out.println(Text.getBlueText("MinutesOfWaiting:"));
             line = input.nextLine();
-            if (!getMinutesOfWaitingCorrectStatus(line)) return -1;
             return Long.parseLong(line);
         } catch (NoSuchElementException e){
             System.out.println(e.getMessage());
-            return -1;
+            minutescheck = true;
+            return 0;
         }
     }
 
@@ -216,7 +218,7 @@ public class CreatorHumanBeing {
             Float.parseFloat(line);
             return true;
         } catch (NumberFormatException exception) {
-            System.out.println(Text.getRedText("Impact speed should be float!"));
+            System.out.println(Text.getRedText("Impact speed should be float! But it's ok, this field will be null"));
             return false;
         }
     }
@@ -224,11 +226,7 @@ public class CreatorHumanBeing {
     public boolean getMinutesOfWaitingCorrectStatus(String line){
         try {
             Long.parseLong(line);
-            if (Long.parseLong(line) >= 0){
-                return true;
-            }
-            System.out.println(Text.getRedText("Obvious, minutes of waiting cannot be negative :)"));
-            return false;
+            return true;
         } catch (NumberFormatException exception) {
             System.out.println(Text.getRedText("Minutes of waiting should be long!"));
             return false;
@@ -237,7 +235,7 @@ public class CreatorHumanBeing {
 
     public boolean getWeaponTypeCorrectStatus(String line){
         if (!WeaponType.isIncludeElement(line)){
-            System.out.println(Text.getRedText("Wrong WeaponType!"));
+            System.out.println(Text.getRedText("Wrong WeaponType! But it's ok, this field will be null"));
         }
         return WeaponType.isIncludeElement(line);
     }

@@ -57,14 +57,14 @@
     "id": 3,
     "name": "fourth",
     "coordinates": {
-      "x": 12,
+      "x": 13,
       "y": 23
     },
     "creationDate": "2022-03-25T21:14:06.760874",
     "realHero": true,
     "hasToothpick": true,
     "impactSpeed": 4.0,
-    "minutesOfWaiting": 2,
+    "minutesOfWaiting": 1313,
     "weaponType": "PISTOL",
     "mood": "SADNESS",
     "car": {

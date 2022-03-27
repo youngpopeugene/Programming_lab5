@@ -19,10 +19,21 @@ public class Update extends CommandAbstract {
     public Object execute(String argName) {
         if(isPositiveLong(argName)){
             HumanBeing human = collectionManager.getId(Long.parseLong(argName));
-            if (human != null) collectionManager.remove(human);
-            else return Text.getRedText("An object with this ID does not exist!");
+//            if (human != null) collectionManager.remove(human);
+//            else return Text.getRedText("An object with this ID does not exist!");
+//            HumanBeing updatingHuman = creatorHumanBeing.createHumanBeing();
+//            if (updatingHuman != null) {
+//                updatingHuman.setId(Long.parseLong(argName));
+//                collectionManager.add(updatingHuman);
+//                return Text.getGreenText("Object has been updated!");
+//            }else return Text.getRedText("Object hasn't been updated! (fields entered incorrectly)");
+
+            if(human == null) return Text.getRedText("An object with this ID does not exist!");
             HumanBeing updatingHuman = creatorHumanBeing.createHumanBeing();
+            if (updatingHuman == null) return Text.getRedText("Object hasn't been updated! (fields entered incorrectly)");
+            CollectionManager.getUsedId().remove(updatingHuman.getId());
             updatingHuman.setId(Long.parseLong(argName));
+            collectionManager.remove(human);
             collectionManager.add(updatingHuman);
             return Text.getGreenText("Object has been updated!");
         }

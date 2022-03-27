@@ -26,7 +26,10 @@ public class Remove_Greater extends CommandAbstract {
                 Iterator<HumanBeing> iterator = collectionManager.iterator();
                 while (iterator.hasNext()){
                     HumanBeing human = iterator.next();
-                    if (human.compareTo(humanToCompare) > 0) iterator.remove();
+                    if (human.compareTo(humanToCompare) > 0) {
+                        iterator.remove();
+                        CollectionManager.getUsedId().remove(human.getId());
+                    }
                 }
                 CollectionManager.getUsedId().remove(humanToCompare.getId());
                 return Text.getGreenText("All greater elements have been removed!");

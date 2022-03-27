@@ -44,8 +44,10 @@ public class JsonParser {
             Scanner scanner = new Scanner(String.valueOf(inputStr)).useDelimiter("\\A");
             String json = scanner.hasNext() ? scanner.next() : "";
             try {
-
                 String[] splitJson = json.split("\n");
+
+                TreeSet<HumanBeing> collection =
+                        gson.fromJson(json.toString(), new TypeToken<TreeSet<HumanBeing>>() {}.getType());
 
                 //замена повторяющихся id
                 int i = -1;
@@ -90,8 +92,9 @@ public class JsonParser {
                     newJson.append(str);
                     newJson.append("\n");
                 }
-                TreeSet<HumanBeing> collection = gson.fromJson(newJson.toString(), new TypeToken<TreeSet<HumanBeing>>() {
-                }.getType());
+
+                collection =
+                        gson.fromJson(newJson.toString(), new TypeToken<TreeSet<HumanBeing>>() {}.getType());
 
                 // установка creationDate
                 for (HumanBeing human : collection) {
@@ -105,20 +108,26 @@ public class JsonParser {
                 }
 
 //                System.out.println(collection);
+
                 // добавление объектов в коллекцию
                 for (HumanBeing human : collection) {
                     if (human.validation()) {
                         CollectionManager.getCollection().add(human);
+                    }else{
+                        CollectionManager.getUsedId().remove(human.getId());
                     }
                 }
 
-            }catch(com.google.gson.JsonSyntaxException e){
-                System.out.println(Text.getRedText("com.google.gson.JsonSyntaxException! Initial collection not installed!"));
-            }catch(NumberFormatException e){
-                System.out.println(Text.getRedText("NumberFormatException! Initial collection not installed!"));
-            }catch(NullPointerException e){
-                System.out.println(Text.getRedText("NullPointerException! Initial collection not installed!"));
             }
+            catch(com.google.gson.JsonSyntaxException e){
+                System.out.println(Text.getRedText("com.google.gson.JsonSyntaxException! Initial collection not installed!"));
+            }
+//            catch(NumberFormatException e){
+//                System.out.println(Text.getRedText("NumberFormatException! Initial collection not installed!"));
+//            }
+//            catch(NullPointerException e){
+//                System.out.println(Text.getRedText("NullPointerException! Initial collection not installed!"));
+//            }
         } catch (IOException e) {
             System.err.println(Text.getRedText("Error reading file! Initial collection not installed!"));
         }
