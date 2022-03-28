@@ -10,20 +10,28 @@ public class CreatorHumanBeing {
     private static Scanner input = new Scanner(System.in);
     private static boolean boolcheck = false;
     private static boolean minutescheck = false;
+    private static int exeStatus = 0;
 
     public HumanBeing createHumanBeing(){
         boolcheck = false;
         minutescheck = false;
         String name = getName();
+        if (exeStatus == 0 && name == null) return null;
         Coordinates coordinates = getCoordinates();
+        if (exeStatus == 0 && coordinates == null) return null;
         LocalDateTime creationDate = LocalDateTime.now();
         boolean realHero = getRealHero();
+        if (exeStatus == 0 && boolcheck) return null;
         boolean hasToothpick = getHasToothpick();
+        if (exeStatus == 0 && boolcheck) return null;
         Float impactSpeed = getImpactSpeed();
         long minutesOfWaiting = getMinutesOfWaiting();
+        if (exeStatus == 0 && minutescheck) return null;
         WeaponType weaponType = getWeaponType();
         Mood mood = getMood();
+        if (exeStatus == 0 && mood == null) return null;
         Car car = getCar();
+        if (exeStatus == 0 && car == null) return null;
 
 
         if (!boolcheck && name != null && coordinates != null
@@ -35,6 +43,14 @@ public class CreatorHumanBeing {
         return null;
 
 
+    }
+
+    public static int getExeStatus() {
+        return exeStatus;
+    }
+
+    public static void setExeStatus(int exeStatus) {
+        CreatorHumanBeing.exeStatus = exeStatus;
     }
 
     public static void setInput(Scanner input) {
@@ -91,6 +107,7 @@ public class CreatorHumanBeing {
             return line.equals("true");
         } catch (NoSuchElementException e){
             System.out.println(e.getMessage());
+            boolcheck = true;
             return false;
         }
     }
@@ -107,6 +124,7 @@ public class CreatorHumanBeing {
             return line.equals("true");
         } catch (NoSuchElementException e) {
             System.out.println(e.getMessage());
+            boolcheck = true;
             return false;
         }
     }

@@ -29,6 +29,8 @@ public class Execute_Script extends CommandAbstract {
                 Reader isr = new InputStreamReader(is);
                 System.out.println(Text.getBlueText("Execute_script in progress!"));
 
+                CreatorHumanBeing.setExeStatus(CreatorHumanBeing.getExeStatus()+1);
+
                 int data = 0;
                 List<Character> line = new ArrayList<>();
 
@@ -87,6 +89,7 @@ public class Execute_Script extends CommandAbstract {
             }
         }
         scriptList.remove(argName);
+        CreatorHumanBeing.setExeStatus(CreatorHumanBeing.getExeStatus()-1);
         return Text.getGreenText("That's all with command execute_script!");
     }
 }

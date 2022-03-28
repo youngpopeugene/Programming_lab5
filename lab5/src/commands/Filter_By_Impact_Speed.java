@@ -17,6 +17,7 @@ public class Filter_By_Impact_Speed extends CommandAbstract {
 
     @Override
     public Object execute(String argName) {
+        boolean isArgNull = false;
         int check = 0;
 
         if (isFloat(argName)){
@@ -24,9 +25,13 @@ public class Filter_By_Impact_Speed extends CommandAbstract {
                 Iterator<HumanBeing> iterator = collectionManager.iterator();
                 while (iterator.hasNext()) {
                     HumanBeing human = iterator.next();
-                    if (human.getImpactSpeed() == Float.parseFloat(argName)) {
-                        System.out.println(human);
-                        check+=1;
+                    try {
+                        if (human.getImpactSpeed() == Float.parseFloat(argName)) {
+                            System.out.println(human);
+                            check += 1;
+                        }
+                    }catch(NullPointerException e){
+                        human = iterator.next();
                     }
                 }
                 if (check != 0) return Text.getGreenText("Successfully filtered by impact speed!");

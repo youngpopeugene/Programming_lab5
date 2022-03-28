@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Car {
     @Expose
-    private Boolean cool; //Поле не может быть null
+    private final Boolean cool; //Поле не может быть null
 
     public Car(Boolean cool) {
         this.cool = cool;

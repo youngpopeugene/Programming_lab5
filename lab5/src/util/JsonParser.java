@@ -13,21 +13,33 @@ import java.util.Scanner;
 import java.util.TreeSet;
 
 public class JsonParser {
-    public void jsonParse(){
+    private Scanner scanner;
+    public JsonParser(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public Object jsonParse(){
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
         HashMap<Long, String> dates = new HashMap<>();
-        File file = new File(CollectionManager.getFILE_PATH());
 
-        //проверка на существование файла
-        if (!file.exists()){
-            try {
+        try {
+            File file = new File(CollectionManager.getFILE_PATH());
+            //проверка на существование файла
+            if (!file.exists()) {
                 file.createNewFile();
-            } catch (IOException e) {
-                System.out.println(Text.getRedText(
-                        "Insufficient permissions to create the file, or the path specified is incorrect!"));
+                return Text.getGreenText("Empty file for writing has been created! Collection is empty!");
+            }else{
+                if (!file.canWrite()) changeWritePermissions(file);
+                if (!file.canRead()) {
+                    if (!changeReadPermissions(file))
+                        return Text.getBlueText("Unable to change read permissions! Collection is empty!");
+                }
             }
+        }catch (IOException e) {
+            return Text.getRedText(
+                    "Insufficient permissions to create the file, or the path specified is incorrect!");
         }
 
         try(Reader inputStreamReader = new InputStreamReader(new FileInputStream(CollectionManager.getFILE_PATH()))) {
@@ -103,7 +115,7 @@ public class JsonParser {
                         human.setCreationDateStr(dates.get(human.getId()));
                     }
                     catch (DateTimeParseException e) {
-                        System.out.println(Text.getRedText("DateTimeParseException! Initial collection not installed!"));
+                        return Text.getRedText("DateTimeParseException! Initial collection not installed!");
                     }
                 }
 
@@ -120,17 +132,48 @@ public class JsonParser {
 
             }
             catch(com.google.gson.JsonSyntaxException e){
-                System.out.println(Text.getRedText("com.google.gson.JsonSyntaxException! Initial collection not installed!"));
+                return Text.getRedText("com.google.gson.JsonSyntaxException! Initial collection not installed!");
             }
-//            catch(NumberFormatException e){
-//                System.out.println(Text.getRedText("NumberFormatException! Initial collection not installed!"));
-//            }
-//            catch(NullPointerException e){
-//                System.out.println(Text.getRedText("NullPointerException! Initial collection not installed!"));
-//            }
         } catch (IOException e) {
-            System.err.println(Text.getRedText("Error reading file! Initial collection not installed!"));
+            return Text.getRedText("Error reading file! Initial collection not installed!");
         }
+
+        return Text.getGreenText("Collection from file has been parsed");
     }
+
+    public void changeWritePermissions(File file) {
+        System.out.println(Text.getRedText("Cannot write file! You can't save data if you will to want!"));
+        System.out.println(Text.getBlueText("Try to change permissions? [Y/N] "));
+        String input;
+        do {
+            input = scanner.nextLine();
+            if (input.equals("Y") || input.equals("Yes")) {
+                if (!file.setWritable(true)) {
+                    System.out.println(Text.getRedText("Failed to change permissions!"));
+                } else System.out.println(Text.getGreenText("Permissions changed successfully!"));
+            } else if (!input.equals("N") && !input.equals("No")) System.out.println(Text.getRedText("Please, write 'Yes' or 'No [Y/N] "));
+        } while (!input.equals("Y") && !input.equals("N") && !input.equals("Yes") && !input.equals("No"));
+    }
+
+    public boolean changeReadPermissions(File file) {
+        System.out.println(Text.getRedText("Cannot read file!"));
+        System.out.println(Text.getBlueText("Try to change permissions? [Y/N] "));
+        String input;
+        do {
+            input = scanner.nextLine();
+            if (input.equals("Y") || input.equals("Yes")) {
+                if (!file.setReadable(true)) {
+                    System.out.println(Text.getRedText("Failed to change permissions"));
+                    return false;
+                }
+                else {
+                    System.out.println(Text.getGreenText("Permissions changed successfully!"));
+                    return true;
+                }
+            } else if (input.equals("N") || input.equals("No")) return false;
+            else System.out.println(Text.getBlueText("Please, write 'Yes' or 'No' [Y/N]: "));
+        } while (true);
+    }
+
 
 }

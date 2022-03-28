@@ -23,7 +23,11 @@ public class Count_Greater_Than_Weapon_Type extends CommandAbstract {
             Iterator<HumanBeing> iterator = collectionManager.iterator();
             while (iterator.hasNext()){
                 HumanBeing human = iterator.next();
-                if (human.getWeaponType().getWeaponType().compareTo(argName) > 0) count+=1;
+                try {
+                    if (human.getWeaponType().getWeaponType().compareTo(argName) > 0) count += 1;
+                }catch(NullPointerException e){
+                    human = iterator.next();
+                }
             }
             return count;
         }

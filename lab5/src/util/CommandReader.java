@@ -5,6 +5,7 @@ import commands.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,7 +57,11 @@ public class CommandReader {
         String nextLine = "";
         while (!nextLine.equals("exit")) {
             System.out.println(Text.getBlueText("Enter the command:"));
-            nextLine = input.nextLine() + " ";
+            try {
+                nextLine = input.nextLine() + " ";
+            }catch(NoSuchElementException e){
+                System.exit(0);
+            }
             CommandInit newCommand = readCommand(nextLine);
             if (newCommand == null){
                 try {

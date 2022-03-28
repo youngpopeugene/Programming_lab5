@@ -1,5 +1,23 @@
 [
   {
+    "id": 5,
+    "name": "fifth",
+    "coordinates": {
+      "x": 12,
+      "y": 23
+    },
+    "creationDate": "2022-03-25T21:14:06.760874",
+    "realHero": true,
+    "hasToothpick": true,
+    "impactSpeed": 4.0,
+    "minutesOfWaiting": 2,
+    "weaponType": "PISTOL",
+    "mood": "SADNESS",
+    "car": {
+      "cool": false
+    }
+  },
+  {
     "id": 1,
     "name": "first",
     "coordinates": {
@@ -11,10 +29,28 @@
     "hasToothpick": true,
     "impactSpeed": 23.0,
     "minutesOfWaiting": 23,
-    "weaponType": "HAMMER",
+    "weaponType": "PISTOL",
     "mood": "SADNESS",
     "car": {
       "cool": true
+    }
+  },
+  {
+    "id": 4,
+    "name": "fourth",
+    "coordinates": {
+      "x": 13,
+      "y": 23
+    },
+    "creationDate": "2022-03-25T21:14:06.760874",
+    "realHero": true,
+    "hasToothpick": true,
+    "impactSpeed": 4.0,
+    "minutesOfWaiting": 1313,
+    "weaponType": "PISTOL",
+    "mood": "SADNESS",
+    "car": {
+      "cool": false
     }
   },
   {
@@ -36,45 +72,8 @@
     }
   },
   {
-    "id": 2,
-    "name": "third",
-    "coordinates": {
-      "x": 12,
-      "y": 23
-    },
-    "creationDate": "2022-03-25T21:14:06.760874",
-    "realHero": true,
-    "hasToothpick": true,
-    "impactSpeed": 4.0,
-    "minutesOfWaiting": 2,
-    "weaponType": "PISTOL",
-    "mood": "SADNESS",
-    "car": {
-      "cool": false
-    }
-  },
-  {
     "id": 3,
-    "name": "fourth",
-    "coordinates": {
-      "x": 13,
-      "y": 23
-    },
-    "creationDate": "2022-03-25T21:14:06.760874",
-    "realHero": true,
-    "hasToothpick": true,
-    "impactSpeed": 4.0,
-    "minutesOfWaiting": 1313,
-    "weaponType": "PISTOL",
-    "mood": "SADNESS",
-    "car": {
-      "cool": false
-    }
-  }
-,
-  {
-    "id": 1,
-    "name": "fifth",
+    "name": "third",
     "coordinates": {
       "x": 12,
       "y": 23

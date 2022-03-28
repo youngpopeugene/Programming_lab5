@@ -24,6 +24,7 @@ public class Save extends CommandAbstract {
             gson.toJson(CollectionManager.getCollection(), printWriter);
         } catch (IOException ex) {
             ex.printStackTrace();
+            return Text.getRedText("IOException");
         }
         return Text.getGreenText("Collection has been saved!");
     }
