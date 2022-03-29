@@ -10,8 +10,6 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-
 public class CommandReader {
     private static Map<String, CommandInterface> command_map = new HashMap<>();
     private static CollectionManager collectionManager = new CollectionManager();

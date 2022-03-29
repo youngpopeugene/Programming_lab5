@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 public class Save extends CommandAbstract {
 
     public Save(){
-        super("save", "сохранить коллекцию в файл");
+        super("save", "save collection to file");
     }
 
     @Override

@@ -8,7 +8,7 @@ public class Remove_By_Id extends CommandAbstract {
     private final CollectionManager collectionManager;
 
     public Remove_By_Id(CollectionManager collectionManager){
-        super("remove_by_id", "удалить элемент из коллекции по его id");
+        super("remove_by_id", "remove element from collection by its id");
         this.collectionManager = collectionManager;
     }
 

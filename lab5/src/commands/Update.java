@@ -8,9 +8,10 @@ import util.Text;
 public class Update extends CommandAbstract {
     private final CollectionManager collectionManager;
     private final CreatorHumanBeing creatorHumanBeing;
+
     public Update(CollectionManager collectionManager, CreatorHumanBeing creatorHumanBeing){
         super("update",
-                "обновить значение элемента коллекции, id которого равен заданному");
+                "update the value of the collection element whose id is equal to the given one");
         this.collectionManager = collectionManager;
         this.creatorHumanBeing = creatorHumanBeing;
     }

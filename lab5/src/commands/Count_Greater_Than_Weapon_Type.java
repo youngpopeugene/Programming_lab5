@@ -12,7 +12,8 @@ public class Count_Greater_Than_Weapon_Type extends CommandAbstract {
 
     public Count_Greater_Than_Weapon_Type(CollectionManager collectionManager){
         super("count_greater_than_weapon_type",
-                "вывести количество элементов, значение поля weaponType которых больше заданного");
+                "display the number of elements whose " +
+                        "weaponType field value is greater than the given one");
         this.collectionManager = collectionManager;
     }
 

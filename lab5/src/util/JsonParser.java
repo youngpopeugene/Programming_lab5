@@ -111,12 +111,14 @@ public class JsonParser {
                 // установка creationDate
                 for (HumanBeing human : collection) {
                     try {
-                        human.setCreationDate(LocalDateTime.parse(dates.get(human.getId())));
-                        human.setCreationDateStr(dates.get(human.getId()));
+                        LocalDateTime.parse(dates.get(human.getId()));
+                    } catch (DateTimeParseException e){
+                        System.out.println(Text.getRedText("Element with id=" + human.getId() +
+                                " hasn't been added in initial collection because of wrong creationDate!"));
+                        continue;
                     }
-                    catch (DateTimeParseException e) {
-                        return Text.getRedText("DateTimeParseException! Initial collection not installed!");
-                    }
+                    human.setCreationDate(LocalDateTime.parse(dates.get(human.getId())));
+                    human.setCreationDateStr(dates.get(human.getId()));
                 }
 
 //                System.out.println(collection);

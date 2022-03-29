@@ -13,7 +13,7 @@ public class Remove_Greater extends CommandAbstract {
 
     public Remove_Greater(CollectionManager collectionManager, CreatorHumanBeing creatorHumanBeing){
         super("remove_greater",
-                "удалить из коллекции все элементы, превышающие заданный");
+                "remove from the collection all elements greater than the given");
         this.collectionManager =  collectionManager;
         this.creatorHumanBeing = creatorHumanBeing;
     }

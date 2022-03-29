@@ -11,8 +11,8 @@ public class Max_By_Real_Hero extends CommandAbstract {
 
     public Max_By_Real_Hero(CollectionManager collectionManager){
         super("max_by_real_hero",
-                "вывести любой объект из коллекции, " +
-                        "значение поля realHero которого является максимальным");
+                "remove any object from the collection, " +
+                        "whose realHero field value is the maximum");
         this.collectionManager =  collectionManager;
     }
 

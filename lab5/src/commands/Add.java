@@ -10,7 +10,7 @@ public class Add extends CommandAbstract {
     private final CreatorHumanBeing creatorHumanBeing;
 
     public Add(CollectionManager collectionManager, CreatorHumanBeing creatorHumanBeing){
-        super("add", "добавить новый элемент в коллекцию");
+        super("add", "add new element in collection");
         this.collectionManager = collectionManager;
         this.creatorHumanBeing = creatorHumanBeing;
     }

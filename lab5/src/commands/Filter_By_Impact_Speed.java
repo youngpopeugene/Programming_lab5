@@ -11,7 +11,7 @@ public class Filter_By_Impact_Speed extends CommandAbstract {
 
     public Filter_By_Impact_Speed(CollectionManager collectionManager){
         super("filter_by_impact_speed",
-                "вывести элементы, значение поля impactSpeed которых равно заданному");
+                "display elements whose value of the impactSpeed field is equal to the given one");
         this.collectionManager = collectionManager;
     }
 

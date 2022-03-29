@@ -10,8 +10,8 @@ public class Add_If_Min extends CommandAbstract {
     private final CreatorHumanBeing creatorHumanBeing;
 
     public Add_If_Min(CollectionManager collectionManager, CreatorHumanBeing creatorHumanBeing){
-        super("add_if_min", "добавить новый элемент в коллекцию, если его значение меньше, " +
-                "чем у наименьшего элемента этой коллекции");
+        super("add_if_min", "add new element in collection if it's value is less " +
+                "than value of the smallest element in collection");
         this.collectionManager = collectionManager;
         this.creatorHumanBeing = creatorHumanBeing;
     }

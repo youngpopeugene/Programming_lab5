@@ -34,7 +34,8 @@ public class HumanBeing implements Comparable<HumanBeing>{
     @Expose
     private final Car car; //Поле не может быть null
 
-    public HumanBeing(String name, Coordinates coordinates, LocalDateTime creationDate, boolean realHero, boolean hasToothpick, Float impactSpeed, long minutesOfWaiting, WeaponType weaponType, Mood mood, Car car) {
+    public HumanBeing(String name, Coordinates coordinates, LocalDateTime creationDate, boolean realHero,
+                      boolean hasToothpick, Float impactSpeed, long minutesOfWaiting, WeaponType weaponType, Mood mood, Car car) {
 
         id = 1L;
         while(CollectionManager.getUsedId().contains(id)){
@@ -124,9 +125,6 @@ public class HumanBeing implements Comparable<HumanBeing>{
 
     @Override
     public int compareTo(HumanBeing o) {
-//        if(res == 0){
-//            res = this.id.compareTo(o.id);
-//        }
         return this.name.compareTo(o.name);
     }
 

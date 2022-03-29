@@ -13,7 +13,7 @@ public class Remove_Lower extends CommandAbstract {
 
     public Remove_Lower(CollectionManager collectionManager, CreatorHumanBeing creatorHumanBeing){
         super("remove_lower",
-                "удалить из коллекции все элементы, меньшие, чем заданный");
+                "remove from the collection all elements smaller than the given one");
         this.collectionManager =  collectionManager;
         this.creatorHumanBeing = creatorHumanBeing;
     }

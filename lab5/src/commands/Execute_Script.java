@@ -12,8 +12,7 @@ public class Execute_Script extends CommandAbstract {
     private static List<String> scriptList = new ArrayList<>();
 
     public Execute_Script() {
-        super("execute_script", "считать и исполнить скрипт из указанного файла. " +
-                "В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме");
+        super("execute_script", "read and execute the script from the specified file");
     }
 
     @Override
@@ -86,6 +85,7 @@ public class Execute_Script extends CommandAbstract {
                 return Text.getRedText("File not found!");
             } catch (IOException e) {
                 e.printStackTrace();
+                return Text.getRedText("IOException");
             }
         }
         scriptList.remove(argName);

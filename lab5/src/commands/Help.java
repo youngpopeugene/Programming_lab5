@@ -8,7 +8,7 @@ import java.util.Map;
 public class Help extends CommandAbstract {
 
     public Help(){
-        super("help", "вывести справку по доступным командам");
+        super("help", "display help on available commands");
     }
 
     @Override
@@ -19,7 +19,7 @@ public class Help extends CommandAbstract {
             for (String i : commands.keySet()){
                 System.out.println(commands.get(i).getDescription());
             }
-            System.out.println("exit : завершить программу (без сохранения в файл)");
+            System.out.println("exit : terminate program (without saving to file)");
             return Text.getGreenText("The end!");
         }
             return Text.getRedText("Command arguments entered incorrectly!");

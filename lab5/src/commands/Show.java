@@ -9,8 +9,8 @@ public class Show extends CommandAbstract {
 
     public Show(CollectionManager collectionManager){
         super("show",
-                "вывести в стандартный поток вывода " +
-                        "все элементы коллекции в строковом представлении");
+                "write to standard output " +
+                        "all elements of the collection in string representation");
         this.collectionManager = collectionManager;
     }
 
