@@ -19,6 +19,9 @@ public class CreatorHumanBeing {
         minutescheck = false;
         speedcheck = false;
         weaponcheck = false;
+        if (exeStatus == 0){
+            input = new Scanner(System.in);
+        }
         String name = getName();
         Coordinates coordinates = getCoordinates();
         LocalDateTime creationDate = LocalDateTime.now();
@@ -30,12 +33,31 @@ public class CreatorHumanBeing {
         Mood mood = getMood();
         Car car = getCar();
 
+//        System.out.println("begin");
+//        System.out.println(name);
+//        System.out.println(coordinates);
+//        System.out.println(coordinates);
+//        System.out.println(creationDate);
+//        System.out.println(realHero);
+//        System.out.println(hasToothpick);
+//        System.out.println(impactSpeed);
+//        System.out.println(minutesOfWaiting);
+//        System.out.println(weaponType);
+//        System.out.println(mood);
+//        System.out.println(car);
+//        System.out.println(boolcheck);
+//        System.out.println(minutescheck);
+//        System.out.println(speedcheck);
+//        System.out.println(weaponcheck);
+//        System.out.println("end");
+
         if (!boolcheck && name != null && coordinates != null
                 && (mood != null) && (car != null) && !minutescheck && !speedcheck && !weaponcheck){
             return new HumanBeing(name, coordinates, creationDate,
                     realHero, hasToothpick, impactSpeed,
                     minutesOfWaiting, weaponType, mood, car);
         }
+
         return null;
 
 
@@ -58,16 +80,17 @@ public class CreatorHumanBeing {
             String line;
             System.out.println(Text.getBlueText("Name:"));
             line = input.nextLine();
+            line = line.trim();
 
-            while(exeStatus == 0 && !getNameCorrectStatus(line)){
+            while(!getNameCorrectStatus(line) && exeStatus == 0){
                 System.out.println(Text.getBlueText("Name:"));
                 line = input.nextLine();
+                line = line.trim();
             }
 
             if (!getNameCorrectStatus(line)) return null;
             return line;
         } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -102,7 +125,7 @@ public class CreatorHumanBeing {
             System.out.println(Text.getBlueText("Coordinate y:"));
             line = input.nextLine();
 
-            while(exeStatus == 0 && !getCoordinateYCorrectStatus(line)){
+            while(!getCoordinateYCorrectStatus(line) && exeStatus == 0){
                 System.out.println(Text.getBlueText("Coordinate y:"));
                 line = input.nextLine();
             }
@@ -112,7 +135,6 @@ public class CreatorHumanBeing {
             return new Coordinates(x, y);
 
         } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
             return null;
         }
 
@@ -146,13 +168,12 @@ public class CreatorHumanBeing {
             String line;
             System.out.println(Text.getBlueText("realHero (true or false):"));
             line = input.nextLine();
-            while(exeStatus == 0 && !getRealHeroCorrectStatus(line)){
+            while(!getRealHeroCorrectStatus(line) && exeStatus == 0){
                 System.out.println(Text.getBlueText("realHero (true or false):"));
                 line = input.nextLine();
             }
             return line.equals("true");
         } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
             boolcheck = true;
             return false;
         }
@@ -174,13 +195,12 @@ public class CreatorHumanBeing {
             String line;
             System.out.println(Text.getBlueText("HasToothpick (true or false):"));
             line = input.nextLine();
-            while(exeStatus == 0 && !getHasToothpickCorrectStatus(line)){
+            while(!getHasToothpickCorrectStatus(line) && exeStatus == 0){
                 System.out.println(Text.getBlueText("HasToothpick (true or false):"));
                 line = input.nextLine();
             }
             return line.equals("true");
         } catch (NoSuchElementException e) {
-            System.out.println(e.getMessage());
             boolcheck = true;
             return false;
         }
@@ -203,7 +223,7 @@ public class CreatorHumanBeing {
             System.out.println(Text.getBlueText("ImpactSpeed:"));
             line = input.nextLine();
 
-            while(exeStatus == 0 && !getImpactSpeedCorrectStatus(line)){
+            while(!getImpactSpeedCorrectStatus(line) && exeStatus == 0){
                 System.out.println(Text.getBlueText("ImpactSpeed:"));
                 line = input.nextLine();
             }
@@ -216,7 +236,6 @@ public class CreatorHumanBeing {
             if(!getImpactSpeedCorrectStatus(line)) return null;
             return Float.parseFloat(line);
         } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
             speedcheck = true;
             return null;
         }
@@ -245,7 +264,7 @@ public class CreatorHumanBeing {
             System.out.println(Text.getBlueText("MinutesOfWaiting:"));
             line = input.nextLine();
 
-            while(exeStatus == 0 && !getMinutesOfWaitingCorrectStatus(line)){
+            while(!getMinutesOfWaitingCorrectStatus(line) && exeStatus == 0){
                 System.out.println(Text.getBlueText("MinutesOfWaiting:"));
                 line = input.nextLine();
             }
@@ -253,7 +272,6 @@ public class CreatorHumanBeing {
             if(!getMinutesOfWaitingCorrectStatus(line)) return 0;
             return Long.parseLong(line);
         } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
             minutescheck = true;
             return 0;
         }
@@ -277,7 +295,7 @@ public class CreatorHumanBeing {
             System.out.println(Text.getBlueText("WeaponType (HAMMER, AXE, PISTOL, SHOTGUN or BAT):"));
             line = input.nextLine();
 
-            while (exeStatus == 0 && !getWeaponTypeCorrectStatus(line)){
+            while (!getWeaponTypeCorrectStatus(line) && exeStatus == 0 ){
                 System.out.println(Text.getBlueText("WeaponType (HAMMER, AXE, PISTOL, SHOTGUN or BAT):"));
                 line = input.nextLine();
             }
@@ -290,7 +308,6 @@ public class CreatorHumanBeing {
             if (!getWeaponTypeCorrectStatus(line)) return null;
             return WeaponType.valueOf(line);
         } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
             weaponcheck = true;
             return null;
         }
@@ -316,7 +333,7 @@ public class CreatorHumanBeing {
             System.out.println(Text.getBlueText("Mood (SADNESS, APATHY, CALM, RAGE or FRENZY):"));
             line = input.nextLine();
 
-            while(exeStatus == 0 && !getMoodCorrectStatus(line)){
+            while(!getMoodCorrectStatus(line) && exeStatus == 0){
                 System.out.println(Text.getBlueText("Mood (SADNESS, APATHY, CALM, RAGE or FRENZY):"));
                 line = input.nextLine();
             }
@@ -324,7 +341,6 @@ public class CreatorHumanBeing {
             if (!getMoodCorrectStatus(line)) return null;
             return Mood.valueOf(line);
         } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -342,14 +358,13 @@ public class CreatorHumanBeing {
             Boolean cool;
             System.out.println(Text.getBlueText("Car.cool (true or false):"));
             line = input.nextLine();
-            while (exeStatus == 0 && !getCoolCorrectStatus(line)){
+            while (!getCoolCorrectStatus(line) && exeStatus == 0){
                 System.out.println(Text.getBlueText("Car.cool (true or false):"));
                 line = input.nextLine();
             }
             cool = line.equals("true");
             return new Car(cool);
         } catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
             boolcheck = true;
             return null;
         }

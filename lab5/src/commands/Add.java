@@ -23,7 +23,7 @@ public class Add extends CommandAbstract {
                 for (HumanBeing otherHuman : collectionManager.getAllElements()) {
                     if (human.getName().equals(otherHuman.getName())) {
                         CollectionManager.getUsedId().remove(human.getId());
-                        return Text.getBlueText("Object hasn't been added! (human with this name already exist)");
+                        return Text.getRedText("Object hasn't been added! (human with this name already exist)");
                     }
                 }
                 collectionManager.add(human);

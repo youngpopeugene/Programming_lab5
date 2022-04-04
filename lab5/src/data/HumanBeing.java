@@ -128,25 +128,23 @@ public class HumanBeing implements Comparable<HumanBeing>{
         return this.name.compareTo(o.name);
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HumanBeing that)) return false;
-        return realHero == that.realHero && hasToothpick == that.hasToothpick &&
-                minutesOfWaiting == that.minutesOfWaiting &&
-                id.equals(that.id) &&
-                name.equals(that.name) && coordinates.equals(that.coordinates) &&
-                Objects.equals(creationDate, that.creationDate) &&
-                Objects.equals(creationDateStr, that.creationDateStr) &&
-                Objects.equals(impactSpeed, that.impactSpeed) &&
-                weaponType == that.weaponType && mood == that.mood && car.equals(that.car);
+        if (o == null || getClass() != o.getClass()) return false;
+        HumanBeing that = (HumanBeing) o;
+        return realHero == that.realHero && hasToothpick == that.hasToothpick
+                && minutesOfWaiting == that.minutesOfWaiting && Objects.equals(id, that.id)
+                && Objects.equals(name, that.name) && Objects.equals(coordinates, that.coordinates)
+                && Objects.equals(creationDate, that.creationDate) && Objects.equals(creationDateStr, that.creationDateStr)
+                && Objects.equals(impactSpeed, that.impactSpeed) && weaponType == that.weaponType && mood == that.mood
+                && Objects.equals(car, that.car);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, coordinates, creationDate,
-                creationDateStr, realHero, hasToothpick, impactSpeed,
-                minutesOfWaiting, weaponType, mood, car);
+        return Objects.hash(id, name, coordinates, creationDate, creationDateStr, realHero, hasToothpick, impactSpeed, minutesOfWaiting, weaponType, mood, car);
     }
 
     @Override

@@ -1,7 +1,29 @@
-df
-df
-show
-execute_script src/resources/script2
-fd
-df
-fd
+info
+add
+andrew
+239
+239
+true
+true
+
+3
+
+SADNESS
+true
+info
+add
+maxim
+239
+239
+true
+true
+5
+3
+
+SADNESS
+
+info
+execute_script /Users/evgenijtulyakov/Desktop/ПРОГА/lab5/resources/script3
+info
+filter_by_impact_speed 6
+info

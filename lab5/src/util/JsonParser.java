@@ -34,12 +34,14 @@ public class JsonParser {
                 if (!file.canWrite()) changeWritePermissions(file);
                 if (!file.canRead()) {
                     if (!changeReadPermissions(file))
-                        return Text.getBlueText("Unable to change read permissions! Collection is empty!");
+                        return Text.getBlueText("Read permissions didn't change! Collection is empty!");
                 }
             }
         }catch (IOException e) {
             return Text.getRedText(
                     "Insufficient permissions to create the file, or the path specified is incorrect!");
+        }catch(NullPointerException e){
+            return Text.getRedText("Path to file doesn't exist!");
         }
 
         try(Reader inputStreamReader = new InputStreamReader(new FileInputStream(CollectionManager.getFILE_PATH()))) {
@@ -144,16 +146,21 @@ public class JsonParser {
     }
 
     public void changeWritePermissions(File file) {
-        System.out.println(Text.getRedText("Cannot write file! You can't save data if you will to want!"));
+        System.out.println(Text.getRedText("Cannot write file! You can't save data if you will want!"));
         System.out.println(Text.getBlueText("Try to change permissions? [Y/N] "));
         String input;
         do {
             input = scanner.nextLine();
-            if (input.equals("Y") || input.equals("Yes")) {
-                if (!file.setWritable(true)) {
-                    System.out.println(Text.getRedText("Failed to change permissions!"));
-                } else System.out.println(Text.getGreenText("Permissions changed successfully!"));
-            } else if (!input.equals("N") && !input.equals("No")) System.out.println(Text.getRedText("Please, write 'Yes' or 'No [Y/N] "));
+            try {
+                if (input.equals("Y") || input.equals("Yes")) {
+                    if (!file.setWritable(true)) {
+                        System.out.println(Text.getRedText("Failed to change permissions!"));
+                    } else System.out.println(Text.getGreenText("Permissions changed successfully!"));
+                } else if (!input.equals("N") && !input.equals("No"))
+                    System.out.println(Text.getRedText("Please, write 'Yes' or 'No [Y/N] "));
+            }catch(NullPointerException e){
+                input = "";
+            }
         } while (!input.equals("Y") && !input.equals("N") && !input.equals("Yes") && !input.equals("No"));
     }
 
@@ -163,17 +170,20 @@ public class JsonParser {
         String input;
         do {
             input = scanner.nextLine();
-            if (input.equals("Y") || input.equals("Yes")) {
-                if (!file.setReadable(true)) {
-                    System.out.println(Text.getRedText("Failed to change permissions"));
-                    return false;
-                }
-                else {
-                    System.out.println(Text.getGreenText("Permissions changed successfully!"));
-                    return true;
-                }
-            } else if (input.equals("N") || input.equals("No")) return false;
-            else System.out.println(Text.getBlueText("Please, write 'Yes' or 'No' [Y/N]: "));
+            try {
+                if (input.equals("Y") || input.equals("Yes")) {
+                    if (!file.setReadable(true)) {
+                        System.out.println(Text.getRedText("Failed to change permissions"));
+                        return false;
+                    } else {
+                        System.out.println(Text.getGreenText("Permissions changed successfully!"));
+                        return true;
+                    }
+                } else if (input.equals("N") || input.equals("No")) return false;
+                else System.out.println(Text.getRedText("Please, write 'Yes' or 'No' [Y/N]: "));
+            }catch(NullPointerException e){
+                input = "";
+            }
         } while (true);
     }
 

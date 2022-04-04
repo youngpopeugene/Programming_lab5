@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import util.CollectionManager;
 import util.Text;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -20,11 +21,21 @@ public class Save extends CommandAbstract {
                 .excludeFieldsWithoutExposeAnnotation()
                 .setPrettyPrinting()
                 .create();
-        try (PrintWriter printWriter = new PrintWriter(CollectionManager.getFILE_PATH())){
+
+        try {
+            File file = new File(CollectionManager.getFILE_PATH());
+            if (!file.canWrite()) {
+                return Text.getRedText("You don't have write permission!");
+            }
+        }catch(NullPointerException e){
+            return Text.getRedText("Path to file doen't exist!");
+        }
+
+
+        try (PrintWriter printWriter = new PrintWriter(CollectionManager.getFILE_PATH())) {
             gson.toJson(CollectionManager.getCollection(), printWriter);
         } catch (IOException ex) {
-            ex.printStackTrace();
-            return Text.getRedText("IOException");
+            return Text.getRedText("Input or output error!");
         }
         return Text.getGreenText("Collection has been saved!");
     }

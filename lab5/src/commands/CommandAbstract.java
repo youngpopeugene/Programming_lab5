@@ -11,16 +11,34 @@ public abstract class CommandAbstract implements CommandInterface{
 
     @Override
     public String getDescription() {
-        return switch (name) {
-            case "help", "info", "show", "exit", "max_by_real_hero", "clear", "save" -> name + " : " + description;
-            case "add", "add_if_min", "remove_greater", "remove_lower" -> name + " {element} : " + description;
-            case "update" -> name + " id {element} : " + description;
-            case "remove_by_id" -> name + " id : " + description;
-            case "execute_script" -> name + " file_name : " + description;
-            case "count_greater_than_weapon_type" -> name + " weaponType " + description;
-            case "filter_by_impact_speed" -> name + " impactSpeed " + description;
-            default -> name + " name : " + description;
-        };
+        switch (name){
+            case "help":
+            case "info":
+            case "show":
+            case "exit":
+            case "max_by_real_hero":
+            case "clear":
+            case "save":
+                return name + " : " + description;
+            case "add":
+            case "add_if_min":
+            case "remove_greater":
+            case "remove_lower":
+                return name + " {element} : " + description;
+            case "update":
+                return name + " id {element} : " + description;
+            case "remove_by_id":
+                return name + " id : " + description;
+            case "execute_script":
+                return name + " file_name : " + description;
+            case "count_greater_than_weapon_type":
+                return name + " weaponType " + description;
+            case "filter_by_impact_speed":
+                return name + " impactSpeed " + description;
+            default:
+                return name + " name : " + description;
+
+        }
     }
 
     @Override

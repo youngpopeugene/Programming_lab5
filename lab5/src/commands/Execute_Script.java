@@ -20,10 +20,17 @@ public class Execute_Script extends CommandAbstract {
         if (argName.equals("")) return Text.getRedText("You should write a script path !!!");
         else{
             try{
+
+                System.out.println("Before");
+                System.out.println(scriptList);
+
                 InputStream is = new FileInputStream(argName);
 
                 if (scriptList.contains(argName)) return Text.getRedText("Recursion is not possible!");
                 else scriptList.add(argName);
+
+                System.out.println("After");
+                System.out.println(scriptList);
 
                 Reader isr = new InputStreamReader(is);
                 System.out.println(Text.getBlueText("Execute_script in progress!"));
@@ -81,11 +88,11 @@ public class Execute_Script extends CommandAbstract {
                 isr.close();
                 CreatorHumanBeing.setInput(new Scanner(System.in));
 
-            } catch (FileNotFoundException ex){
-                return Text.getRedText("File not found!");
+            }
+            catch (FileNotFoundException ex){
+                return Text.getRedText("File not found or you don't have read permission!");
             } catch (IOException e) {
-                e.printStackTrace();
-                return Text.getRedText("IOException");
+                return Text.getRedText("Input or output error!");
             }
         }
         scriptList.remove(argName);
