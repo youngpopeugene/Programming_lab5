@@ -5,7 +5,9 @@ import util.CollectionManager;
 import util.Text;
 
 import java.util.Iterator;
-
+/**
+ * Class for print elements which have specific impact speed
+ */
 public class Filter_By_Impact_Speed extends CommandAbstract {
     private final CollectionManager collectionManager;
 

@@ -3,7 +3,9 @@ package data;
 import com.google.gson.annotations.Expose;
 
 import java.util.Objects;
-
+/**
+ * Enum for coordinates of human's location
+ */
 public class Coordinates {
     @Expose
     private long x; //Максимальное значение поля: 695

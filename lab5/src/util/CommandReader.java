@@ -9,7 +9,9 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * CommandReader read strings from input to commands and arguments
+ */
 public class CommandReader {
     private static Map<String, CommandInterface> command_map = new HashMap<>();
     private static CollectionManager collectionManager = new CollectionManager();
@@ -33,6 +35,13 @@ public class CommandReader {
         command_map.put("filter_by_impact_speed", new Filter_By_Impact_Speed(collectionManager));
     }
 
+    /**
+     * Method for find command and its argument in string line
+     *
+     * @param inputString - input string
+     *
+     * @return object of CommandInit class - class for convenience of working with command and argument
+     */
     public static CommandInit readCommand(String inputString){
         String command;
         String arg;
@@ -51,6 +60,11 @@ public class CommandReader {
         return new CommandInit(command.trim(), arg.trim());
     }
 
+    /**
+     * Method which begin the whole process
+     *
+     * @param input - input source, object of Scanner
+     */
     public void enable(Scanner input){
         String nextLine = "";
         while (!nextLine.equals("exit")) {
@@ -74,6 +88,11 @@ public class CommandReader {
         }
     }
 
+    /**
+     * Method for check the command for correctness
+     *
+     * @param newCommand - object of CommandInit class - class for convenience of working with command and argument
+     */
     public static void execute(CommandInit newCommand){
         String command = newCommand.getCommandName();
         String arg = newCommand.getArgName();

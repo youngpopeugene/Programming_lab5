@@ -2,7 +2,9 @@ package commands;
 
 import util.CollectionManager;
 import util.Text;
-
+/**
+ * Class for remove all elements from collection
+ */
 public class Clear extends CommandAbstract {
     private final CollectionManager collectionManager;
 

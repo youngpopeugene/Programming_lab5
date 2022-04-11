@@ -1,5 +1,7 @@
 package data;
-
+/**
+ * Enum for human's mood
+ */
 public enum Mood {
     SADNESS("SADNESS"),
     APATHY("APATHY"),

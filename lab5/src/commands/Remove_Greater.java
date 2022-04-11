@@ -7,13 +7,16 @@ import util.Text;
 
 import java.util.Iterator;
 
+/**
+ * Class for remove from the collection all elements greater than the given on
+ */
 public class Remove_Greater extends CommandAbstract {
     private final CollectionManager collectionManager;
     private final CreatorHumanBeing creatorHumanBeing;
 
     public Remove_Greater(CollectionManager collectionManager, CreatorHumanBeing creatorHumanBeing){
         super("remove_greater",
-                "remove from the collection all elements greater than the given");
+                "remove from the collection all elements greater than the given one");
         this.collectionManager =  collectionManager;
         this.creatorHumanBeing = creatorHumanBeing;
     }

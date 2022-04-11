@@ -6,6 +6,9 @@ import util.Text;
 
 import java.util.Iterator;
 
+/**
+ * Class for remove any element with the max realHero field
+ */
 public class Max_By_Real_Hero extends CommandAbstract {
     private final CollectionManager collectionManager;
 

@@ -3,7 +3,9 @@ package commands;
 import data.HumanBeing;
 import util.CollectionManager;
 import util.Text;
-
+/**
+ * Class to print all elements from collection
+ */
 public class Show extends CommandAbstract {
     private final CollectionManager collectionManager;
 

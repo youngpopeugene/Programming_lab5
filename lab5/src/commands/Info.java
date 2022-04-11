@@ -2,7 +2,9 @@ package commands;
 
 import util.CollectionManager;
 import util.Text;
-
+/**
+ * Class for displaying all commands with explanations
+ */
 public class Info extends CommandAbstract {
     private final CollectionManager collectionManager;
 

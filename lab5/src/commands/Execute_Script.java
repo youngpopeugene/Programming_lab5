@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
+/**
+ * Class for validation script path, check script status and check it for recursion
+ */
 public class Execute_Script extends CommandAbstract {
     private static List<String> scriptList = new ArrayList<>();
 

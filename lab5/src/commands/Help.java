@@ -4,7 +4,9 @@ import util.CommandReader;
 import util.Text;
 
 import java.util.Map;
-
+/**
+ * Class for displaying all commands with explanations
+ */
 public class Help extends CommandAbstract {
 
     public Help(){

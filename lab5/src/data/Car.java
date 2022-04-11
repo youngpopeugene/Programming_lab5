@@ -3,7 +3,9 @@ package data;
 import com.google.gson.annotations.Expose;
 
 import java.util.Objects;
-
+/**
+ * Class for human's car
+ */
 public class Car {
     @Expose
     private final Boolean cool; //Поле не может быть null

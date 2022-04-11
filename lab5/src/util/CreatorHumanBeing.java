@@ -5,7 +5,9 @@ import data.*;
 import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-
+/**
+ * Class for creating Humanbeings with autogenerate id and Date
+ */
 public class CreatorHumanBeing {
     private static Scanner input = new Scanner(System.in);
     private static boolean boolcheck = false;
@@ -14,6 +16,11 @@ public class CreatorHumanBeing {
     private static boolean weaponcheck = false;
     private static int exeStatus = 0;
 
+    /**
+     * Method for create element of collection
+     *
+     * @return new element of collection or null
+     */
     public HumanBeing createHumanBeing(){
         boolcheck = false;
         minutescheck = false;
@@ -33,24 +40,6 @@ public class CreatorHumanBeing {
         Mood mood = getMood();
         Car car = getCar();
 
-//        System.out.println("begin");
-//        System.out.println(name);
-//        System.out.println(coordinates);
-//        System.out.println(coordinates);
-//        System.out.println(creationDate);
-//        System.out.println(realHero);
-//        System.out.println(hasToothpick);
-//        System.out.println(impactSpeed);
-//        System.out.println(minutesOfWaiting);
-//        System.out.println(weaponType);
-//        System.out.println(mood);
-//        System.out.println(car);
-//        System.out.println(boolcheck);
-//        System.out.println(minutescheck);
-//        System.out.println(speedcheck);
-//        System.out.println(weaponcheck);
-//        System.out.println("end");
-
         if (!boolcheck && name != null && coordinates != null
                 && (mood != null) && (car != null) && !minutescheck && !speedcheck && !weaponcheck){
             return new HumanBeing(name, coordinates, creationDate,
@@ -58,9 +47,8 @@ public class CreatorHumanBeing {
                     minutesOfWaiting, weaponType, mood, car);
         }
 
+
         return null;
-
-
     }
 
     public static int getExeStatus() {

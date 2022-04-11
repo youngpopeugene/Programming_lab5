@@ -8,7 +8,9 @@ import util.Text;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+/**
+ * Class to save collection in json file
+ */
 public class Save extends CommandAbstract {
 
     public Save(){

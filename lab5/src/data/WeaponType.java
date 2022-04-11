@@ -1,5 +1,7 @@
 package data;
-
+/**
+ * Enum for human's weapon
+ */
 public enum WeaponType {
     HAMMER("HAMMER"),
     AXE("AXE"),
@@ -13,13 +15,13 @@ public enum WeaponType {
         this.weaponType = weaponType;
     }
 
-    public String getWeaponType() {
+    public String getStringWeaponType() {
         return weaponType;
     }
 
     public static boolean isIncludeElement(String weaponType){
         for (WeaponType x : WeaponType.values()){
-            if (weaponType.equals(x.getWeaponType())){
+            if (weaponType.equals(x.getStringWeaponType())){
                 return true;
             }
         }

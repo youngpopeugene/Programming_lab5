@@ -1,14 +1,25 @@
 package commands;
-
+/**
+ * Abstract class for commands
+ */
 public abstract class CommandAbstract implements CommandInterface{
     private final String name;
     private final String description;
-
+    /**
+     * Class constructor
+     *
+     * @param commandName        - Command's name
+     * @param commandDescription - Command's description
+     */
     public CommandAbstract(String commandName, String commandDescription) {
         name = commandName;
         description = commandDescription;
     }
-
+    /**
+     * Method for print information about command
+     *
+     * @return String with command's name and description
+     */
     @Override
     public String getDescription() {
         switch (name){
@@ -40,7 +51,9 @@ public abstract class CommandAbstract implements CommandInterface{
 
         }
     }
-
+    /**
+     * Universal method to executing commands
+     */
     @Override
     public abstract Object execute(String argName);
 }

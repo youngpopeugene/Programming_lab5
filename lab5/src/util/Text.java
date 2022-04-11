@@ -1,5 +1,7 @@
 package util;
-
+/**
+ * Class for format text - highlighting errors and informative messages
+ */
 public class Text {
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_RED = "\u001B[31m";

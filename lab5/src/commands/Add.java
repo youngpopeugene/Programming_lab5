@@ -4,7 +4,9 @@ import data.HumanBeing;
 import util.CollectionManager;
 import util.CreatorHumanBeing;
 import util.Text;
-
+/**
+ * Class for read study group from console and add this in collection
+ */
 public class Add extends CommandAbstract {
     private final CollectionManager collectionManager;
     private final CreatorHumanBeing creatorHumanBeing;

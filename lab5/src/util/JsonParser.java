@@ -12,12 +12,26 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+/**
+ * Class for parse from json file to the collection before executing any command
+ */
 public class JsonParser {
     private Scanner scanner;
+
+    /**
+     * Class constructor
+     *
+     * @param scanner
+     */
     public JsonParser(Scanner scanner) {
         this.scanner = scanner;
     }
 
+    /**
+     * Method for parse from json file to the collection
+     *
+     * @return result of parsing
+     */
     public Object jsonParse(){
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
@@ -123,8 +137,6 @@ public class JsonParser {
                     human.setCreationDateStr(dates.get(human.getId()));
                 }
 
-//                System.out.println(collection);
-
                 // добавление объектов в коллекцию
                 for (HumanBeing human : collection) {
                     if (human.validation()) {
@@ -145,6 +157,9 @@ public class JsonParser {
         return Text.getGreenText("Collection from file has been parsed");
     }
 
+    /**
+     * Method for change write permissions
+     */
     public void changeWritePermissions(File file) {
         System.out.println(Text.getRedText("Cannot write file! You can't save data if you will want!"));
         System.out.println(Text.getBlueText("Try to change permissions? [Y/N] "));
@@ -164,6 +179,11 @@ public class JsonParser {
         } while (!input.equals("Y") && !input.equals("N") && !input.equals("Yes") && !input.equals("No"));
     }
 
+    /**
+     * Method for change read permissions
+     *
+     * @return true or false - can change or not
+     */
     public boolean changeReadPermissions(File file) {
         System.out.println(Text.getRedText("Cannot read file!"));
         System.out.println(Text.getBlueText("Try to change permissions? [Y/N] "));

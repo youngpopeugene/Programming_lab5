@@ -4,6 +4,9 @@ import data.HumanBeing;
 import util.CollectionManager;
 import util.Text;
 
+/**
+ * Class for remove element by id
+ */
 public class Remove_By_Id extends CommandAbstract {
     private final CollectionManager collectionManager;
 
@@ -15,7 +18,7 @@ public class Remove_By_Id extends CommandAbstract {
     @Override
     public Object execute(String argName) {
         if(isPositiveLong(argName)){
-            HumanBeing human = collectionManager.getId(Long.parseLong(argName));
+            HumanBeing human = collectionManager.getById(Long.parseLong(argName));
             if (human != null) {
                 collectionManager.remove(human);
                 CollectionManager.getUsedId().remove(human.getId());

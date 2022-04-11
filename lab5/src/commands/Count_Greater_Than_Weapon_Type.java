@@ -6,7 +6,9 @@ import util.CollectionManager;
 import util.Text;
 
 import java.util.Iterator;
-
+/**
+ * Class for count elements which greater than specified weapon type
+ */
 public class Count_Greater_Than_Weapon_Type extends CommandAbstract {
     private final CollectionManager collectionManager;
 
@@ -25,7 +27,7 @@ public class Count_Greater_Than_Weapon_Type extends CommandAbstract {
             while (iterator.hasNext()){
                 HumanBeing human = iterator.next();
                 try {
-                    if (human.getWeaponType().getWeaponType().compareTo(argName) > 0) count += 1;
+                    if (human.getWeaponType().getStringWeaponType().compareTo(argName) > 0) count += 1;
                 }catch(NullPointerException e){
                     human = iterator.next();
                 }

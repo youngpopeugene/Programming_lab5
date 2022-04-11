@@ -6,14 +6,16 @@ import util.CreatorHumanBeing;
 import util.Text;
 
 import java.util.Iterator;
-
+/**
+ * Class for remove from the collection all elements lower than the given on
+ */
 public class Remove_Lower extends CommandAbstract {
     private final CollectionManager collectionManager;
     private final CreatorHumanBeing creatorHumanBeing;
 
     public Remove_Lower(CollectionManager collectionManager, CreatorHumanBeing creatorHumanBeing){
         super("remove_lower",
-                "remove from the collection all elements smaller than the given one");
+                "remove from the collection all elements lower than the given one");
         this.collectionManager =  collectionManager;
         this.creatorHumanBeing = creatorHumanBeing;
     }

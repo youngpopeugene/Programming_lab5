@@ -4,7 +4,9 @@ import data.HumanBeing;
 import util.CollectionManager;
 import util.CreatorHumanBeing;
 import util.Text;
-
+/**
+ * Class to update element in collection by id
+ */
 public class Update extends CommandAbstract {
     private final CollectionManager collectionManager;
     private final CreatorHumanBeing creatorHumanBeing;
@@ -19,7 +21,7 @@ public class Update extends CommandAbstract {
     @Override
     public Object execute(String argName) {
         if(isPositiveLong(argName)){
-            HumanBeing human = collectionManager.getId(Long.parseLong(argName));
+            HumanBeing human = collectionManager.getById(Long.parseLong(argName));
             if(human == null) return Text.getRedText("An object with this ID does not exist!");
             HumanBeing updatingHuman = creatorHumanBeing.createHumanBeing();
             if (updatingHuman == null) return Text.getRedText("Object hasn't been updated! (fields entered incorrectly)");

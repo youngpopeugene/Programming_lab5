@@ -3,7 +3,9 @@ package util;
 import data.HumanBeing;
 
 import java.util.*;
-
+/**
+ * Class to work with collection
+ */
 public class CollectionManager {
     private static TreeSet<data.HumanBeing> collection;
     private final String initTime;
@@ -25,20 +27,40 @@ public class CollectionManager {
                 "Initialization date" + " : " + initTime + "\n" +
                 "Number of items in the collection" + " : " + collection.size();
     }
-
+    /**
+     * Add element to collection
+     *
+     * @see commands.Add#execute
+     * @see commands.Add_If_Min#execute
+     */
     public void add(HumanBeing human){
         collection.add(human);
     }
 
+    /**
+     * Remove element from collection
+     *
+     * @see commands.Remove_By_Id#execute
+     */
     public void remove(HumanBeing human){
         collection.remove(human);
     }
 
+    /**
+     * Remove all elements of collection
+     *
+     * @see commands.Clear#execute
+     */
     public void clear() {
         collection.clear();
     }
 
-    public HumanBeing getId(Long id){
+    /**
+     * Method for return the element of collection by id
+     *
+     * @return the element of collection by id
+     */
+    public HumanBeing getById(Long id){
         for (HumanBeing human : collection){
             if (human.getId().equals(id)) return human;
         }
@@ -61,10 +83,20 @@ public class CollectionManager {
         return new ArrayList<>(collection);
     }
 
+    /**
+     * Method for return the first element of collection
+     *
+     * @return the first element of collection
+     */
     public HumanBeing first() {
         return collection.first();
     }
 
+    /**
+     * Method for return the size od collection
+     *
+     * @return the size od collection
+     */
     public int size() {
         return collection.size();
     }

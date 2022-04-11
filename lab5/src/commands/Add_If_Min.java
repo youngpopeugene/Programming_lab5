@@ -4,7 +4,9 @@ import data.HumanBeing;
 import util.CollectionManager;
 import util.CreatorHumanBeing;
 import util.Text;
-
+/**
+ * Class for add minimal element in collection
+ */
 public class Add_If_Min extends CommandAbstract {
     private final CollectionManager collectionManager;
     private final CreatorHumanBeing creatorHumanBeing;

@@ -6,7 +6,9 @@ import util.CollectionManager;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-
+/**
+ * Class for humans
+ */
 public class HumanBeing implements Comparable<HumanBeing>{
     @Expose
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -75,9 +77,11 @@ public class HumanBeing implements Comparable<HumanBeing>{
     public void setCreationDate(LocalDateTime creationDate){
         this.creationDate = creationDate;
     }
+
     public void setCreationDateStr(String creationDateStr){
         this.creationDateStr = creationDateStr;
     }
+
     public String getName() {
         return name;
     }
@@ -88,18 +92,6 @@ public class HumanBeing implements Comparable<HumanBeing>{
 
     public LocalDateTime getCreationDate() {
         return creationDate;
-    }
-
-    public String getCreationDateStr() {
-        return creationDateStr;
-    }
-
-    public boolean isHasToothpick() {
-        return hasToothpick;
-    }
-
-    public long getMinutesOfWaiting() {
-        return minutesOfWaiting;
     }
 
     public WeaponType getWeaponType() {
@@ -127,7 +119,6 @@ public class HumanBeing implements Comparable<HumanBeing>{
     public int compareTo(HumanBeing o) {
         return this.name.compareTo(o.name);
     }
-
 
     @Override
     public boolean equals(Object o) {
